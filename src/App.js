@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+// App.jsx
+import React from "react";
+import ProductPage from "./components/ProductTable";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CssBaseline, Container, Typography } from "@mui/material";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
+import rtlPlugin from "stylis-plugin-rtl";
+import { prefixer } from "stylis";
+
+const theme = createTheme({
+  direction: "rtl",
+  typography: {
+    fontFamily: "'Cairo', sans-serif"
+  }
+});
+
+const cacheRtl = createCache({
+  key: "muirtl",
+  stylisPlugins: [prefixer, rtlPlugin]
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CacheProvider value={cacheRtl}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Container>
+          <Typography variant="h4" gutterBottom align="center">
+            نظام إدارة مكونات الأثاث
+          </Typography>
+          <ProductPage />
+        </Container>
+      </ThemeProvider>
+    </CacheProvider>
   );
 }
 

@@ -1,0 +1,9 @@
+{
+  "product_name": "اسم المنتج",
+  "price": "السعر",
+  "material": "الخامة",
+  "add_subcomponent": "إضافة مكون فرعي",
+  "save": "حفظ البيانات",
+  "final_sizes": "المقاسات النهائية",
+  "notes": "ملاحظات"
+}
